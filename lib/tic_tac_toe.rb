@@ -117,7 +117,7 @@ class Game
 	def play_again?
 		puts "Play Again? (y/n)"
 		response = gets.chomp
-		if(response.downcase == "y" || response.downcase == "yes")
+		if(response.downcase.strip == "y" || response.downcase.strip == "yes")
 			return true
 		else
 			return false
