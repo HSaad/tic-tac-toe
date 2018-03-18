@@ -1,5 +1,5 @@
 class Game
-	attr_accessor :board_array, :current_player, :player2
+	attr_accessor :board_array, :current_player
 
 	def initialize
 		@board_array = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -161,6 +161,8 @@ class Player
 		move = gets.chomp
 		if valid_move?(move, board_array)
 			@player_moves.push(move.to_i) 
+		else 
+			move(board_array)
 		end
 	end
 
@@ -168,7 +170,6 @@ class Player
 		if (move.to_i > 0 && move.to_i < 10) && (board_array[move.to_i - 1] != 'x' && board_array[move.to_i - 1] != 'o')
 			return true
 		else
-			move(board_array)
 			return false
 		end
 	end
@@ -182,9 +183,11 @@ class Computer < Player
 		if valid_move?(move, board_array)
 			@player_moves.push(move.to_i) 
 			puts "Computer's Move: #{move}"
+		else
+			move(board_array)
 		end
 	end
 end
 
-#game = Game.new()
-#game.start
+game = Game.new()
+game.start
